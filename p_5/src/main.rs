@@ -24,5 +24,11 @@ primes_until
 )
 -> Vec<u64>
 {
+	let mut primes = Vec::new();
+
+	for x in (3..(val+1)).step_by(2)
+	{
+		primes.push(x);
+	}
 	todo!()
 }
