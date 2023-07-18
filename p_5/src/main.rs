@@ -1,7 +1,7 @@
 fn 
 main() 
 {
-    println!("Hello, world!");
+	primes_until(10);
 }
 
 /// Computes the prime decomposition of val
@@ -22,7 +22,7 @@ primes_until
 (
 	val: u64
 )
--> Vec<u64>
+// -> Vec<u64>
 {
 	let mut primes = Vec::new();
 
@@ -30,5 +30,6 @@ primes_until
 	{
 		primes.push(x);
 	}
-	todo!()
+	println!("{:?}", primes);
+	// todo!()
 }
