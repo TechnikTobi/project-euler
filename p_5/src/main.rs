@@ -1,7 +1,7 @@
 fn 
 main() 
 {
-	primes_until(10);
+	primes_until(100);
 }
 
 /// Computes the prime decomposition of val
@@ -28,7 +28,20 @@ primes_until
 
 	for x in (3..(val+1)).step_by(2)
 	{
-		primes.push(x);
+		let mut is_prime = true;
+		for prime in &primes
+		{
+			if x % prime == 0
+			{
+				is_prime = false;
+				break;
+			}
+		}
+
+		if is_prime
+		{
+			primes.push(x);
+		}
 	}
 	println!("{:?}", primes);
 	// todo!()
