@@ -22,7 +22,7 @@ primes_until
 (
 	val: u64
 )
-// -> Vec<u64>
+-> Vec<u64>
 {
 	let mut primes = Vec::new();
 
@@ -43,6 +43,8 @@ primes_until
 			primes.push(x);
 		}
 	}
-	println!("{:?}", primes);
+
+	return primes;
+	// println!("{:?}", primes);
 	// todo!()
 }
