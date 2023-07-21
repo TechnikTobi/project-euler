@@ -7,6 +7,7 @@ main()
 	let candidate = construct_candidate(low, high);
 
 	println!("{}", candidate);
+	println!("{}", reduce(low, high, candidate));
 
 	
 }
@@ -36,11 +37,17 @@ reduce
 )
 -> u64
 {
-	let out working_value = value;
-	let mut processed = Vet::new();
+	let mut working_value = value;
+	let mut processed = Vec::new();
 	for i in low..=high
 	{
-		let out check_this = true;
+
+		if i <= 1
+		{
+			continue;
+		}
+
+		let mut check_this = true;
 		for j in &processed 
 		{
 			if i % j == 0
@@ -51,10 +58,44 @@ reduce
 		}
 		if check_this
 		{
-			
+			working_value = reduce_by(low, high, working_value, i);
+			processed.push(i);
 		}
 	}
+	return working_value;
 }
+
+fn
+reduce_by
+(
+	low: u64,
+	high: u64,
+	value: u64,
+	reducer: u64,
+)
+-> u64
+{
+	let mut working_value = value;
+	let mut can_be_reduced = true;
+
+	while can_be_reduced
+	{
+		working_value = working_value / reducer;
+
+		for i in low..=high
+		{
+			if working_value % i != 0
+			{
+				working_value = working_value * reducer;
+				can_be_reduced = false;
+				break;
+			}	
+		}
+	}
+
+	return working_value;
+}
+
 
 /*
 /// Computes the prime decomposition of val
