@@ -1,9 +1,62 @@
 fn 
 main() 
 {
-	primes_until(100);
+	// primes_until(100);
+	let low = 1;
+	let high = 20;
+	let candidate = construct_candidate(low, high);
+
+	println!("{}", candidate);
+
+	
 }
 
+fn
+construct_candidate
+(
+	low: u64,
+	high: u64
+)
+-> u64
+{
+	let mut result = 1;
+	for i in low..=high
+	{
+		result *= i;
+	}	
+	return result;
+}
+
+fn
+reduce
+(
+	low: u64,
+	high: u64,
+	value: u64,
+)
+-> u64
+{
+	let out working_value = value;
+	let mut processed = Vet::new();
+	for i in low..=high
+	{
+		let out check_this = true;
+		for j in &processed 
+		{
+			if i % j == 0
+			{
+				check_this = false;
+				break;
+			}
+		}
+		if check_this
+		{
+			
+		}
+	}
+}
+
+/*
 /// Computes the prime decomposition of val
 fn
 prime_decomp
@@ -48,3 +101,4 @@ primes_until
 	// println!("{:?}", primes);
 	// todo!()
 }
+*/
