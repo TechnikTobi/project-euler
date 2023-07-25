@@ -3,6 +3,15 @@ const thousand_digits: &str = "7316717653133062491922511967442657474235534919493
 fn 
 main() 
 {
-    println!("Hello, world! {}", thousand_digits);
+    find_max_adjacent_product(4, thousand_digits);
 }
 
+fn
+find_max_adjacent_product
+(
+    window_size: usize,
+    digits: &str
+)
+{
+    println!("{}", digits);
+}
