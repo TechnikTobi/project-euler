@@ -3,15 +3,58 @@ const thousand_digits: &str = "7316717653133062491922511967442657474235534919493
 fn 
 main() 
 {
-    find_max_adjacent_product(4, thousand_digits);
+	find_max_adjacent_product(13, thousand_digits);
 }
 
 fn
 find_max_adjacent_product
 (
-    window_size: usize,
-    digits: &str
+	window_size: usize,
+	digits: &str
 )
 {
-    println!("{}", digits);
+	if window_size < 1
+	{
+		return;
+	}
+
+	let mut max_product = 0;
+	let mut max_product_index = 0;
+
+	for i in 0..digits.len()
+	{
+		let product = get_product(i, window_size, digits);
+		
+		if product > max_product
+		{
+			max_product = product;
+			max_product_index = i;
+		}
+	}
+
+	println!("{} with start at {}", max_product, max_product_index);
+}
+
+fn
+get_product
+(
+	start: usize,
+	window_size: usize,
+	digits: &str
+)
+-> u64
+{
+	if start + window_size > digits.len()
+	{
+		return 0;
+	}
+
+	let mut product = 1u64;
+
+	for i in start..start+window_size
+	{
+		product *= digits.chars().nth(i).unwrap().to_digit(10).unwrap() as u64;
+	}
+	
+	return product;
 }
