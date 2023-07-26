@@ -21,10 +21,10 @@ create_primes_until
 		let mut is_prime = true;
 		for prime in &primes
 		{
-			// if *prime as f64 > (candidate as f64).sqrt()
-			// {
-			// 	break;
-			// }
+			if *prime as f64 > (candidate as f64).sqrt()
+			{
+				break;
+			}
 
 			if candidate % prime == 0
 			{
