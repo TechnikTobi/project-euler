@@ -104,9 +104,24 @@ const numbers: [&str; 100] = [
 fn 
 main() 
 {
-	println!("Hello, world!");
+	// Number of digitis per number
+	const number_length: usize = 50;
+
+	// How many digits to consider for the sum
+	let digits_to_consider = 10;
+
+	// The sum
+	let mut sum = 0;
+
 	for number in numbers
 	{
-		println!("{}", number.chars().nth(0).unwrap());
+		for i in 1..=digits_to_consider
+		{
+			let digit = number.chars().nth(number_length-i).unwrap();
+			sum += 10_u64.pow((i-1) as u32) * (digit.to_digit(10).unwrap() as u64);
+		}
 	}
+
+	// Get the digits that form the answer
+	println!("{}", sum % 10_u64.pow(digits_to_consider as u32));
 }
