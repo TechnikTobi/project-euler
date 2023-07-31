@@ -3,7 +3,8 @@ main()
 {
 	println!("2:  {}", count_moves(2 ,2 ));
 	println!("3:  {}", count_moves(3 ,3 ));
-	println!("20: {}", count_moves(20,20));
+	println!("4:  {}", count_moves(4 ,4 ));
+	println!("20: {}", count_moves(10,10));
 }
 
 fn
@@ -21,14 +22,25 @@ count_moves
 
 	let mut moves = 0;
 
-	for i in 1..=avail_right
+	if avail_right == avail_down
 	{
-		moves += count_moves(avail_right-i, avail_down-1);
+		for i in 1..=avail_right
+		{
+			moves += 2*count_moves(avail_right-i, avail_down-1);
+		}
 	}
-
-	for i in 1..=avail_down
+	else
 	{
-		moves += count_moves(avail_right-1, avail_down-i);
+		for i in 1..=avail_right
+		{
+			moves += count_moves(avail_right-i, avail_down-1);
+		}
+
+		for i in 1..=avail_down
+		{
+			moves += count_moves(avail_right-1, avail_down-i);
+		}
+
 	}
 
 	return moves;
