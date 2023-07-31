@@ -1,7 +1,10 @@
 fn 
 main() 
 {
-	println!("Hello, world! {}", count_moves(3,3));
+	// println!("2:  {}", count_moves(2 ,2 ));
+	println!("3:  {}", count_moves(1 ,2 ));
+	println!("3:  {}", count_moves(2 ,1 ));
+	// println!("20: {}", count_moves(20,20));
 }
 
 fn
@@ -17,8 +20,14 @@ count_moves
 		return 1;
 	}
 
-	// return count_moves(avail_right, avail_down-1) + count_moves(avail_right-1, avail_down);
-	return 
-		2 * count_moves(avail_right-1, avail_down-1) + 
-		2 * 
+	let mut moves = 0;
+
+	for i in 1..=avail_right
+	{
+		println!(" ");
+		println!("{} {} {}", avail_right, avail_down, count_moves(avail_right-i, avail_down-1));
+		moves += 2 * count_moves(avail_right-i, avail_down-1);
+	}
+
+	return moves;
 }
