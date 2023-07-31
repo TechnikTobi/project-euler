@@ -1,10 +1,9 @@
 fn 
 main() 
 {
-	// println!("2:  {}", count_moves(2 ,2 ));
-	println!("3:  {}", count_moves(1 ,2 ));
-	println!("3:  {}", count_moves(2 ,1 ));
-	// println!("20: {}", count_moves(20,20));
+	println!("2:  {}", count_moves(2 ,2 ));
+	println!("3:  {}", count_moves(3 ,3 ));
+	println!("20: {}", count_moves(20,20));
 }
 
 fn
@@ -24,9 +23,12 @@ count_moves
 
 	for i in 1..=avail_right
 	{
-		println!(" ");
-		println!("{} {} {}", avail_right, avail_down, count_moves(avail_right-i, avail_down-1));
-		moves += 2 * count_moves(avail_right-i, avail_down-1);
+		moves += count_moves(avail_right-i, avail_down-1);
+	}
+
+	for i in 1..=avail_down
+	{
+		moves += count_moves(avail_right-1, avail_down-i);
 	}
 
 	return moves;
