@@ -1,4 +1,6 @@
-fn main() {
+fn 
+main() 
+{
 	println!("{}", to_ascii(1));
 	println!("{}", to_ascii(10));
 	println!("{}", to_ascii(20));
@@ -6,6 +8,12 @@ fn main() {
 	println!("{}", to_ascii(91));
 	println!("{}", to_ascii(99));
 	println!("{}", to_ascii(100));
+	println!("{}", to_ascii(101));
+	println!("{}", to_ascii(121));
+	println!("{}", to_ascii(342));
+	println!("{}", to_ascii(342).len());
+	println!("{}", to_ascii(115));
+	println!("{}", to_ascii(115).len());
 }
 
 fn
@@ -37,8 +45,8 @@ irregular_to_ascii
 		18   => "eighteen",
 		19   => "nineteen",
 		20   => "twenty",
-		30   => "thrity",
-		40   => "fourty",
+		30   => "thirty",
+		40   => "forty",
 		50   => "fifty",
 		60   => "sixty",
 		70   => "seventy",
@@ -79,7 +87,17 @@ to_ascii
 
 	if number < 1000
 	{
-		
+		let ten_number = number % 100;
+		let hundred_number = number - ten_number;
+
+		let mut numberString = irregular_to_ascii(hundred_number / 100);
+		numberString.push_str(&irregular_to_ascii(100));
+		if ten_number > 0
+		{
+			numberString.push_str("and");
+			numberString.push_str(&to_ascii(ten_number));
+		}
+		return numberString;
 	}
 
 	if number < 1000000
