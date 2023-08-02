@@ -1,19 +1,12 @@
 fn 
 main() 
 {
-	println!("{}", to_ascii(1));
-	println!("{}", to_ascii(10));
-	println!("{}", to_ascii(20));
-	println!("{}", to_ascii(21));
-	println!("{}", to_ascii(91));
-	println!("{}", to_ascii(99));
-	println!("{}", to_ascii(100));
-	println!("{}", to_ascii(101));
-	println!("{}", to_ascii(121));
-	println!("{}", to_ascii(342));
-	println!("{}", to_ascii(342).len());
-	println!("{}", to_ascii(115));
-	println!("{}", to_ascii(115).len());
+	let mut sum = 0;
+	for i in 1..=1000
+	{
+		sum += to_ascii(i).len();
+	}
+	println!("{}", sum);
 }
 
 fn
@@ -102,7 +95,7 @@ to_ascii
 
 	if number < 1000000
 	{
-
+		return irregular_to_ascii(number);
 	}
 
 	todo!();
