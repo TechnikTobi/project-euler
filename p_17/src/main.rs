@@ -4,6 +4,7 @@ main()
 	let mut sum = 0;
 	for i in 1..=1000
 	{
+		println!("{}", to_ascii(i));
 		sum += to_ascii(i).len();
 	}
 	println!("{}", sum);
@@ -95,7 +96,18 @@ to_ascii
 
 	if number < 1000000
 	{
-		return irregular_to_ascii(number);
+		let hundred_number = number % 1000;
+		let thousand_number = number - hundred_number;
+
+		let mut numberString = to_ascii(thousand_number / 1000);
+		numberString.push_str(&irregular_to_ascii(1000));
+
+		if hundred_number > 0
+		{
+			numberString.push_str(&to_ascii(hundred_number));
+		}
+
+		return numberString;
 	}
 
 	todo!();
