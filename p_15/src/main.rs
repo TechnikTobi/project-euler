@@ -4,7 +4,7 @@ main()
 	println!("2:  {}", count_moves(2 ,2 ));
 	println!("3:  {}", count_moves(3 ,3 ));
 	println!("4:  {}", count_moves(4 ,4 ));
-	println!("20: {}", count_moves(10,10));
+	println!("20: {}", count_moves(20,20));
 }
 
 fn
