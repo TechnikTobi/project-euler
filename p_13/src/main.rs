@@ -107,21 +107,41 @@ main()
 	// Number of digitis per number
 	const number_length: usize = 50;
 
-	// How many digits to consider for the sum
-	let digits_to_consider = 10;
-
 	// The sum
-	let mut sum = 0;
+	let mut sum = vec!["0".to_string()];
 
 	for number in numbers
 	{
-		for i in 1..=digits_to_consider
+		let mut carry = 0;
+
+		for i in 1..=number_length
 		{
 			let digit = number.chars().nth(number_length-i).unwrap();
-			sum += 10_u64.pow((i-1) as u32) * (digit.to_digit(10).unwrap() as u64);
+
+			if i-1 >= sum.len() { sum.push("0".to_string()); }
+			let sum_digit = &sum[i-1];
+
+			let partial_sum = sum_digit.chars().nth(0).unwrap().to_digit(10).unwrap() + digit.to_digit(10).unwrap() + carry;
+
+			let new_digit = partial_sum % 10;
+			carry = (partial_sum - new_digit) / 10;
+			sum[i-1] = new_digit.to_string();
+		}
+
+		let mut i = number_length;
+		while carry > 0
+		{
+			if i >= sum.len() { sum.push("0".to_string()); }
+			let sum_digit = &sum[i];
+			let partial_sum = sum_digit.chars().nth(0).unwrap().to_digit(10).unwrap() + carry;
+			let new_digit = partial_sum % 10;
+			carry = (partial_sum - new_digit) / 10;
+			sum[i] = new_digit.to_string();
+			i += 1;	
 		}
 	}
 
-	// Get the digits that form the answer
-	println!("{}", sum % 10_u64.pow(digits_to_consider as u32));
+	let mut rev_sum = sum.into_iter().rev().collect::<Vec<_>>();
+	rev_sum.truncate(10);
+	println!("{}", rev_sum.join(""));
 }
