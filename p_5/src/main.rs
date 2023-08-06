@@ -1,15 +1,12 @@
 fn 
 main() 
 {
-	// primes_until(100);
 	let low = 1;
 	let high = 20;
 	let candidate = construct_candidate(low, high);
 
-	println!("{}", candidate);
+	// println!("{}", candidate);
 	println!("{}", reduce(low, high, candidate));
-
-	
 }
 
 fn
