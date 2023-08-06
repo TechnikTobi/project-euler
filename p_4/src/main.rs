@@ -21,8 +21,21 @@ is_palindrome
 
 fn main() 
 {
-	println!("{:?}", is_palindrome(123));
-	println!("{:?}", is_palindrome(9009));
-	println!("{:?}", is_palindrome(909));
-	println!("{:?}", is_palindrome(908));
+	let mut maximum = 0;
+
+	for a in 100..=999
+	{
+		for b in a..=999
+		{
+			if is_palindrome(a*b)
+			{
+				if maximum < a*b
+				{
+					maximum = a*b;
+				}
+			}
+		}
+	}
+
+	println!("{}", maximum);
 }
