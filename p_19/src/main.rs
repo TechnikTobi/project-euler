@@ -1,10 +1,10 @@
 fn 
 main() 
 {
-	let mut year = 1900;
-	let mut month = 1;
+	let mut year = 1901;
+	let mut month = 9;
 	let mut day = 1;
-	let mut weekday = 1;
+	let mut weekday = 0;
 
 	let mut sundays_on_first_of_month = 0;
 
