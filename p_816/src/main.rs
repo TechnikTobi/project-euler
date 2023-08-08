@@ -42,3 +42,9 @@ RandomGenerator
 		return result;
 	}
 }
+
+#[no_mangle]
+pub extern "C" fn rust_function(arg1: i32, arg2: i32) -> i32
+{
+	arg1 + arg2
+}
